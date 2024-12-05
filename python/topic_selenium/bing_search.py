@@ -28,6 +28,8 @@ time.sleep(3)
 wait = WebDriverWait(driver, 10)
 next_page = wait.until(EC.element_to_be_clickable((By.XPATH,
                                                    f"//a[@class='sb_pagN sb_pagN_bp b_widePag sb_bp ' and @aria-label='下一页' and @title='下一页']")))
+# 防止按钮不可见
+driver.execute_script("arguments[0].scrollIntoView();", next_page)
 next_page.click()
 # 等待页面加载
 time.sleep(3)
@@ -76,6 +78,8 @@ time.sleep(3)
 wait = WebDriverWait(driver, 10)
 next_page = wait.until(EC.element_to_be_clickable((By.XPATH,
                                                    f"//a[@class='sb_pagN sb_pagN_bp b_widePag sb_bp ' and @aria-label='下一页' and @title='下一页']")))
+# 防止按钮不可见
+driver.execute_script("arguments[0].scrollIntoView();", next_page)
 next_page.click()
 time.sleep(3)
 
