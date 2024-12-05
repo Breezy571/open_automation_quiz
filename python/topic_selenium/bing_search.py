@@ -1,3 +1,4 @@
+import sys
 import time
 from collections import defaultdict
 
@@ -10,8 +11,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 my_name = 'Breezy'
 next_key = 'Selenium'
 url = 'https://www.bing.com/?mkt=zh-CN'
+
+if len(sys.argv) > 1:
+    # print(f"接收到的参数为: {sys.argv[1:]}")
+    browser = sys.argv[1]
+else:
+    browser = 'chrome'
+
+print(f'使用{browser}浏览器')
 # 初始化WebDriver
-driver = webdriver.Chrome()
+if browser == 'edge':
+    driver = webdriver.Edge()
+else:
+    driver = webdriver.Chrome()
+
 
 # 打开测试网站
 driver.get(url)
@@ -62,6 +75,7 @@ def print_search_results():
     print("\n结果统计")
     for tld, count in tld_count.items():
         print(f"{tld} --> {count}")
+
 
 print(f"结果列表 ({my_name})")
 print_search_results()
